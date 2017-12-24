@@ -9,15 +9,13 @@
 # não foi estudado. Se não existir retorne o exit code 1, se existir retorne
 # exit 0
 ###############################################################################
-
-echo "Username"
-read $NOME
+NOME=$1
 echo ""
-echo Nome Completo: $()
+echo Nome Completo: $(cat /etc/passwd | grep $NOME | cut -d":" -f5| tr -d ,)
 echo ""
-echo ID: $()
+echo ID: $(cat /etc/passwd | grep $NOME | cut -d":" -f3)
 echo ""
-echo Total em uso /home: $()
+echo Total em uso /home: $(du -sh /home/$(cat /etc/passwd | grep $NOME | cut -d":" -f1))
 echo ""
-echo Ultimo login $()
+echo Ultimo login $(w | grep  $NOME)
 echo ""
