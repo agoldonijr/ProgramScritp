@@ -13,10 +13,10 @@
 
 HORA=$(date +%H)
 
-if [ "$HORA" -ge 6 -a "$HORA" -le 12 ];
+if [ "$HORA" -ge 6 -a "$HORA" -lt 12 ];
 then
 	echo "Bom dia"
-elif [ "$HORA" -gt 12 -a "$HORA" -le 18 ];
+elif [ "$HORA" -ge 12 -a "$HORA" -lt 18 ];
 then
 	echo "Boa tarde"
 else

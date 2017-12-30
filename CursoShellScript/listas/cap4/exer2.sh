@@ -24,3 +24,43 @@
 # /home/ricardo/Backup
 # Backup Concluído!
 ############################################################################### 
+
+DESTINO=$HOME/backup
+
+if [ ! -d $DESTINO ]
+then
+	echo Criando diretorio $DESTINO
+	mkdir -p $DESTINO
+fi
+
+#Verifica se existe um arquivos de backup com menos de 7 dias
+DAYS=$(find $DESTINO -ctime -7 -name backup_home\*.tgz) 
+
+if [ "$DAYS" ] #testando se a variavel é nula
+then
+	echo "Já foi gerado um backup no diretório $HOME  nos ultimos 7 dias"
+	echo -n "Deseja continuar? (N/s): "
+	read -n1 CONT
+	echo
+	if [ "$CONT" = N -o "$CONT" = n -o "$CONT" = "" ]
+	then
+		echo Abortado!
+		exit 1
+	elif [ "$CONT" = s -o "$CONT" = S ]
+	then
+		echo "Será criado outro backup na mesma semana"
+	else
+		echo "Opcao invalida"
+		exit 2
+	fi
+fi
+
+echo "Criando backup... "
+ARQ="backup_home+$(date +%Y%m%d%H%M).tgz"
+
+tar zcvpf $DESTINO/$ARQ --absolute-names --exclude="$DESTINO" --exclude=$HOME/down "$HOME"/* > /dev/null
+
+echo
+echo "O backup de nome \""$ARQ"\"foi criado em $DESTINO"
+echo
+echo "Concluido"
