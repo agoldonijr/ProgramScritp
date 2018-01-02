@@ -50,4 +50,7 @@ case $op in
 			expr $VAR1 / $VAR2
 		fi
 	;;
+	*)
+		echo "Opcao invalida"
+		exit 1
 esac
