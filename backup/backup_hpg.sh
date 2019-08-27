@@ -1,3 +1,7 @@
+# Copyright (C) 2019 Alcides Goldoni Junior <agoldonijr@gmail.com>
+# Copyright (C) 2019 Alcides Goldoni Junior <goldoni@ggaunicamp.com>
+
+
 #/bin/bash
 #####################################################################
 #Script de backup feito pela equipe de suporte do HPG
