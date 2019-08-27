@@ -1,3 +1,5 @@
+# Copyright (C) 2019 Alcides Goldoni Junior <goldoni@ggaunicamp.com>
+# Copyright (C) 2019 Alcides Goldoni Junior <agoldonijr@gmail.com>
 #!/bin/bash
 
 PASTA=$1
