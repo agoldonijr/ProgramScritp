@@ -1,0 +1,62 @@
+# Copyright (C) 2019 Alcides Goldoni Junior <goldoni@ggaunicamp.com>
+
+---
+- name: Ansible tests playbook
+  hosts: all
+  become: yes 
+  become_method: sudo
+
+  tasks:
+  #verifica se as entradas do fstab possuem os repos e o home
+    - lineinfile:
+        path: /etc/fstab
+        state: present
+        regexp: '^172\.16\.0\.10'
+        line: '172.16.0.10:/home       /home   nfs     rw,auto,exec,tcp,nfsvers=3,rsize=65536,wsize=65536      0       2'
+
+    - lineinfile:
+        path: /etc/fstab
+        state: present
+        regexp: '^172\.16\.0\.6\:\/opt\/repo\-processamento'
+        line: '172.16.0.6:/opt/repo-processamento     /opt/repo-processamento   nfs     auto,users,exec,tcp,nfsvers=3,intr,async,rsize=32768,wsize=32768    0       2'
+
+    - lineinfile:
+        path: /etc/fstab
+        state: present
+        regexp: '^172\.16\.0\.6\:\/opt\/repo\-alunos'
+        line: '172.16.0.6:/opt/repo-alunos     /opt/repo-alunos         nfs     auto,users,exec,tcp,nfsvers=3,intr,async,rsize=32768,wsize=32768    0       2'
+
+    - lineinfile:
+        path: /etc/fstab
+        state: present
+        regexp: '^172\.16\.0\.6\:\/opt\/repo\-admin'
+        line: '172.16.0.6:/opt/repo-admin     /opt/repo-admin           nfs     auto,users,exec,tcp,nfsvers=3,intr,async,rsize=32768,wsize=32768    0       2'
+    - lineinfile:
+        path: /etc/ntp.conf
+        state: present
+        regexp: '^server ntp.unicamp.br'
+        line: 'server ntp.unicamp.br'
+    
+    - lineinfile:
+        path: /etc/ntp.conf
+        state: present
+        regexp: '^server ntp1.unicamp.br'
+        line: 'server ntp1.unicamp.br'
+    
+    - lineinfile:
+        path: /etc/ntp.conf
+        state: present
+        regexp: '^server ntp2.unicamp.br'
+        line: 'server ntp2.unicamp.br'
+    
+    - lineinfile:
+        path: /etc/ntp.conf
+        state: present
+        regexp: '^server ntp3.unicamp.br'
+        line: 'server ntp3.unicamp.br'
+   
+    - lineinfile:
+        path: /etc/ntp.conf
+        state: present
+        regexp: '^server ntp4.unicamp.br'
+        line: 'server ntp4.unicamp.br'

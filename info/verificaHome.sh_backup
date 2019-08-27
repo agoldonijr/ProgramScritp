@@ -1,0 +1,31 @@
+#!/bin/bash
+
+###############################################################################
+# Esse script verifica o tamanho do home, caso ele chegue a 75% um email eh 
+# enviando ao administrador para que verifique o tamanho do home
+#
+# Esse script pode ser colocado no cron pois sua utilizacao nao depende de nada
+###############################################################################
+
+EMAIL=goldoni@ggaunicamp.com
+
+#procura pela particao home no comando df  e imprime a quinta coluna removendo o % do fim
+VALOR=$(df -h | grep home | awk '{print $5}' | tr -d %})
+
+echo $VALOR
+
+if [ "$VALOR" -gt 75 ];
+then
+	#echo verificar tamanho do home
+	echo "O home ultrapassou 75%! Verificar!" | mail -s "Verificar tamanho do Home" $EMAIL
+fi
+
+
+#COTA=$(xfs_quota -x -c 'report -h' /home | grep day | awk '{print $1}')
+#COTA=$(cat /tmp/teste1 | grep day | awk '{print $1}')
+
+if [ "$COTA" != "" ];
+then
+#    echo $COTA
+    echo "Existem usuarios que entraram na politica de cotas em disco, verificar!" | mail -s "Verificar Cotas em disco" $EMAIL
+fi
