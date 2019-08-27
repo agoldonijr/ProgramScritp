@@ -1,3 +1,6 @@
+# Copyright (C) 2019 Alcides Goldoni Junior <agoldonijr@gmail.com>
+# Copyright (C) 2019 Alcides Goldoni Junior <goldoni@ggaunicamp.com>
+
 #!/bin/bash
 
 echo "Atualizando repositorios"
