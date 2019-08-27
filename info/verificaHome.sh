@@ -1,6 +1,8 @@
-#!/bin/bash
+# Copyright (C) 2019 Alcides Goldoni Junior <agoldonijr@gmail.com>
 # Copyright (C) 2019 Alcides Goldoni Junior <goldoni@ggaunicamp.com>
 
+
+#!/bin/bash
 ###############################################################################
 # Esse script verifica o tamanho do home, caso ele chegue a 75% um email eh 
 # enviando ao administrador para que verifique o tamanho do home

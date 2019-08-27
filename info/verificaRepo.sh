@@ -1,8 +1,10 @@
-#!/bin/bash
+# Copyright (C) 2019 Alcides Goldoni Junior <agoldonijr@gmail.com>
+# Copyright (C) 2019 Alcides Goldoni Junior <goldoni@ggaunicamp.com>
 
 ###############################################################################
 # Esse script verifica se os repos estao montados
 # Foi criado pelo Caian e atualizado pelo Alcides
+# https://github.com/Caian
 ###############################################################################
 
 #maquinas=("vader" "succubus" "scar" "negan" "baronesa" "alcapone" "loki" "charada" "kratos")
