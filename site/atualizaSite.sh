@@ -1,5 +1,7 @@
+# Copyright (C) 2019 Alcides Goldoni Junior <agoldonijr@gmail.com>
+# Copyright (C) 2019 Alcides Goldoni Junior <goldoni@ggaunicamp.com>
+
 #!/bin/bash
-# Copyright (C) 2018 Alcides Goldoni Junior <goldoni@ggaunicamp.com>
 
 ###############################################################################
 #
