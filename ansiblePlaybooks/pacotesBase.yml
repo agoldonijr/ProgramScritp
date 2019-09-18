@@ -1,8 +1,7 @@
 # Copyright (C) 2019 Alcides Goldoni Junior <goldoni@ggaunicamp.com>
-# Copyright (C) 2019 Alcides Goldoni Junior <agoldonijr@gmail.com>
 
 ---
-- name: Ansible tests playbook
+- name: Ansible install base packages 
   hosts: all
   become: yes 
   become_method: sudo
@@ -33,6 +32,7 @@
         - vim
         - screen
         - gcc
+        - g++
         - openssh-server
         - goldendict 
         - pdftk 
@@ -57,6 +57,9 @@
         - python-pymongo 
         - python-opencv 
         - python3-tk
+        - python3-pip 
+        - python3-dev 
+        - python-virtualenv
         - libcv-dev 
         - opencv-doc 
         - libhighgui-dev 
@@ -74,9 +77,7 @@
         - vorbis-tools 
         - x264 
         - arj 
-        - p7zip 
         - p7zip-full 
-        - p7zip-rar 
         - unrar 
         - unace-nonfree 
         - vlc 
@@ -135,3 +136,4 @@
         - vim-gnome 
         - tmux
         - gfortran
+        - imagemagick
