@@ -1,33 +1,30 @@
-# Copyright (C) 2019 Alcides Goldoni Junior <agoldonijr@gmail.com>
-# Copyright (C) 2019 Alcides Goldoni Junior <goldoni@ggaunicamp.com>
-
 #!/bin/bash
 
-echo "Atualizando repositorios"
+echo "Atualizando repositorios" >> /tmp/logPadronizacao
 apt-get update 2>&1 > /dev/null
-echo "Atualizando pacotes instalados"
+echo "Atualizando pacotes instalados" >> /tmp/logPadronizacao
 apt-get upgrade -y 2>&1 > /dev/null
-#echo "Pacotes atualizados"
+#echo "Pacotes atualizados" >> /tmp/logPadronizacao
 
-echo "Instalacao dos pacotes"
-apt-get install -y goldendict python-matplotlib vim pdftk ispell gcc kile maxima inkscape eclipse openssh-server gparted build-essential pstoedit okular nfs-common python-scitools ipython python-sklearn python-pywt libcv-dev opencv-doc python-opencv libhighgui-dev kdiff3 texlive-full icedax id3v2 lame libflac++6v5 libjpeg-progs mencoder regionset sox uudeview vorbis-tools x264 arj p7zip p7zip-full p7zip-rar unrar unace-nonfree vlc gimp screen htop cpufrequtils ntp aspell aspell-pt-br djvulibre-desktop libclang-dev cmake ipython-notebook python-{sympy,scipy,numpy} bpython stow libdbus-1-dev libcups2 openssl libcups2-dev cups-bsd cups-client libsane-dev libusb-1.0.0-dev libcupsimage2-dev libsnmp-dev snmp-mibs-downloader libtool opencl-headers lsb-core mono-devel git gitk fftw-dev libfftw3-dev libeigen3-dev libcgal-dev libopenmpi-dev gnome-session-flashback x11proto-xf86bigfont-dev xfstt t1-xfree86-nonfree ttf-xfree86-nonfree ttf-xfree86-nonfree-syriac xfonts-75dpi xfonts-100dpi x11-xfs-utils xfstt curl autoconf autoconf-archive autogen automake libmnl-dev python-pymongo uuid-dev compizconfig-settings-manager compiz-plugins libx11-dev   libxt-dev 2>&1 > /dev/null
+echo "Instalacao dos pacotes">> /tmp/logPadronizacao
+apt-get install -y goldendict python-matplotlib vim pdftk ispell gcc kile maxima inkscape eclipse openssh-server gparted build-essential pstoedit okular nfs-common python-scitools ipython python-sklearn python-pywt libcv-dev opencv-doc python-opencv libhighgui-dev kdiff3 texlive-full icedax id3v2 lame libflac++6v5 libjpeg-progs mencoder regionset sox uudeview vorbis-tools x264 arj p7zip p7zip-full p7zip-rar unrar unace-nonfree vlc gimp screen htop cpufrequtils ntp aspell aspell-pt-br djvulibre-desktop libclang-dev cmake ipython-notebook python-{sympy,scipy,numpy} bpython stow libdbus-1-dev libcups2 openssl libcups2-dev cups-bsd cups-client libsane-dev libusb-1.0.0-dev libcupsimage2-dev libsnmp-dev snmp-mibs-downloader libtool opencl-headers lsb-core mono-devel git gitk fftw-dev libfftw3-dev libeigen3-dev libcgal-dev libopenmpi-dev gnome-session-flashback x11proto-xf86bigfont-dev xfstt t1-xfree86-nonfree ttf-xfree86-nonfree ttf-xfree86-nonfree-syriac xfonts-75dpi xfonts-100dpi x11-xfs-utils xfstt curl autoconf autoconf-archive autogen automake libmnl-dev python-pymongo uuid-dev compizconfig-settings-manager compiz-plugins libx11-dev   libxt-dev aptitude 2>&1 > /dev/null
 if [ $? -eq 0 ];
 then
-	echo "Istalacao concluida"
+	echo "Istalacao concluida">> /tmp/logPadronizacao
 else
-	echo "Erro na instalacao dos pacotes. Refazer"
+	echo "Erro na instalacao dos pacotes. Refazer">> /tmp/logPadronizacao
 	exit 1
 fi
 
-echo 'Instalacao octave'
+echo 'Instalacao octave'>> /tmp/logPadronizacao
 apt-add-repository -y ppa:octave/stable 
-aptitude update
+apt-get update
 apt-get -y install octave
 if [ $? -eq 0 ];
 then
-	echo "Istalacao do octave concluida"
+	echo "Istalacao do octave concluida">> /tmp/logPadronizacao
 else
-	echo "Erro na instalacao do octave. Refazer"
+	echo "Erro na instalacao do octave. Refazer">> /tmp/logPadronizacao
 fi
 
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
@@ -36,12 +33,12 @@ apt-get update 2>&1 > /dev/null
 apt-get install google-chrome-stable 2>&1 > /dev/null
 if [ $? -eq 0 ];
 then
-	echo "Istalacao do chrome concluida"
+	echo "Istalacao do chrome concluida">> /tmp/logPadronizacao
 else
-	echo "Erro ao instalar o chrome"
+	echo "Erro ao instalar o chrome">> /tmp/logPadronizacao
 fi
 
-echo "Criando arquivo ntp"
+echo "Criando arquivo ntp">> /tmp/logPadronizacao
 cp /etc/ntp.conf /etc/ntp.conf.save
 rm /etc/ntp.conf
 touch /etc/ntp.conf
@@ -61,27 +58,27 @@ echo "restrict -4 default kod notrap nomodify nopeer noquery" >> /etc/ntp.conf
 echo "restrict -6 default kod notrap nomodify nopeer noquery" >> /etc/ntp.conf
 echo "restrict 127.0.0.1" >> /etc/ntp.conf
 echo "restrict ::1" >> /etc/ntp.conf
-echo "Configuracao de ntp concluida"
+echo "Configuracao de ntp concluida">> /tmp/logPadronizacao
 
-echo "Modificando id do Manutencao"
+echo "Modificando id do Manutencao" >> /tmp/logPadronizacao
 usermod --uid 999 manutencao
 if [ $? -eq 0 ];
 then
-	echo "Id de manutencao modificado"
+	echo "Id de manutencao modificado">> /tmp/logPadronizacao
 else
-	echo "Erro ao modificar id de manutencao"
+	echo "Erro ao modificar id de manutencao">> /tmp/logPadronizacao
     exit 1
 fi
 groupmod -g 999 manutencao
 if [ $? -eq 0 ];
 then
-	echo "Gid de manutencao modificado"
+	echo "Gid de manutencao modificado">> /tmp/logPadronizacao
 else
-	echo "Erro ao modificar gid de manutencao"
+	echo "Erro ao modificar gid de manutencao">> /tmp/logPadronizacao
     exit 1
 fi
 
-echo "Configuracao de fstab com o NFS"
+echo "Configuracao de fstab com o NFS">> /tmp/logPadronizacao
 cp /etc/fstab /etc/fstab.save
 
 echo "#HOME" >> /etc/fstab
@@ -91,19 +88,19 @@ echo "172.16.0.6:/opt/repo-admin     /opt/repo-admin nfs     auto,users,exec,tcp
 echo "172.16.0.6:/opt/repo-processamento     /opt/repo-processamento nfs     auto,users,exec,tcp,nfsvers=3,intr,async,rsize=32768,wsize=32768    0       2" >> /etc/fstab
 echo "172.16.0.6:/opt/repo-alunos    /opt/repo-alunos        nfs     auto,users,exec,tcp,nfsvers=3,intr,async,rsize=32768,wsize=32768        0       2" >> /etc/fstab
 
-echo "Criacao dos repos"
+echo "Criacao dos repos">> /tmp/logPadronizacao
 mkdir -p /opt/repo-admin && mkdir -p /opt/repo-processamento && mkdir -p /opt/repo-alunos
 
-echo "Configuracao de Nis"
+echo "Configuracao de Nis">> /tmp/logPadronizacao
 apt-get install nis
 if [ "$?" -eq 0 ];
 then
-	echo "Istalacao concluida" && cp /etc/yp.conf /etc/yp.conf.save && echo "domain hpg server 172.16.0.10" >> /etc/yp.conf
+	echo "Istalacao concluida">> /tmp/logPadronizacao && cp /etc/yp.conf /etc/yp.conf.save && echo "domain hpg server 172.16.0.10" >> /etc/yp.conf
 else
-	echo "Erro na instalacao do Nis. Refazer"
+	echo "Erro na instalacao do Nis. Refazer">> /tmp/logPadronizacao
 fi
 
-echo "Configuracao de nsswitch.conf"
+echo "Configuracao de nsswitch.conf">> /tmp/logPadronizacao
 cp /etc/nsswitch.conf /etc/nsswitch.conf.save
 rm /etc/nsswitch.conf
 echo "passwd:         nis files compat ">> /etc/nsswitch.conf
@@ -117,14 +114,14 @@ echo "ethers:         db files ">> /etc/nsswitch.conf
 echo "rpc:            db files ">> /etc/nsswitch.conf
 echo "netgroup:       nis ">> /etc/nsswitch.conf
 
-echo "Padronizacao tela de login"
+echo "Padronizacao tela de login">> /tmp/logPadronizacao
 echo "greeter-show-manual-login=true" >>  /usr/share/lightdm/lightdm.conf.d/50-ubuntu.conf
 echo "allow-guest=false" >> /usr/share/lightdm/lightdm.conf.d/50-ubuntu.conf
 echo "greeter-hide-users=true" >> /usr/share/lightdm/lightdm.conf.d/50-ubuntu.conf
 
-echo "Instalacao singulatity"
-VERSION=2.4
-#VERSION=2.5.2
+echo "Instalacao singulatity">> /tmp/logPadronizacao
+#VERSION=2.4
+VERSION=2.5.2
 wget https://github.com/singularityware/singularity/releases/download/$VERSION/singularity-$VERSION.tar.gz
 tar xvf singularity-$VERSION.tar.gz
 cd singularity-$VERSION
@@ -132,8 +129,8 @@ cd singularity-$VERSION
 make
 make install
 
-echo "Adicionando alias para o promax"
-cp /etc/bash.bashrc /etc/bash.bashrc_save
+#echo "Adicionando alias para o promax">> /tmp/logPadronizacao
+#cp /etc/bash.bashrc /etc/bash.bashrc_save
 
 #echo "function promax {" >> /etc/bash.bashrc
 #echo "   singularity exec /export_local/centos_6_9_estavel.img /usr/local/Landmark/SeisSpace5000.10.0/SeisSpace/etc/sitemgr start" >> /etc/bash.bashrc
@@ -143,20 +140,20 @@ cp /etc/bash.bashrc /etc/bash.bashrc_save
 #echo "alias norsar_seisrox=\"singularity exec /export_local/centos_6_9_estavel.img /usr/local/norsar_seisrox/NORSAR_Software_Suite_2017.1/NORSAR.sh\"" >> /etc/bash.bashrc
 #echo ""
 
-echo "Instalacao do cuda 9.0"
+echo "Instalacao do cuda 9.0">> /tmp/logPadronizacao
 wget https://developer.nvidia.com/compute/cuda/9.0/Prod/local_installers/cuda-repo-ubuntu1604-9-0-local_9.0.176-1_amd64-deb  2>&1 > /dev/null
 dpkg --install cuda-repo-ubuntu1604-9-0-local_9.0.176-1_amd64-deb  2>&1 > /dev/null
 apt-key add /var/cuda-repo-9-0-local/7fa2af80.pub  2>&1 > /dev/null
 apt-get update  2>&1 > /dev/null
 apt-get install -y cuda  2>&1 > /dev/null
-echo "Verificar instalacao do Cuda"
+echo "Verificar instalacao do Cuda">> /tmp/logPadronizacao
 
-echo "Instalacao do Netdata"
+echo "Instalacao do Netdata">> /tmp/logPadronizacao
 bash <(curl -Ss https://my-netdata.io/kickstart.sh)
-echo "Validar instalacao e registro"
+echo "Validar instalacao e registro">> /tmp/logPadronizacao
 
 touch /etc/scriptDeInstalacaoConcluido
 
 echo ""
-echo "Padronizacao quase finalizada."
-echo "Instalar: SU, Java, Impressoras, Nvidia (se possuir)"
+echo "Padronizacao quase finalizada.">> /tmp/logPadronizacao
+echo "Instalar: SU, Java, Impressoras, Nvidia (se possuir)">> /tmp/logPadronizacao
