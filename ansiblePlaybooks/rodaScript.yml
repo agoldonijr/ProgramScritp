@@ -1,4 +1,5 @@
 # Copyright (C) 2019 Alcides Goldoni Junior <goldoni@ggaunicamp.com>
+# Copyright (C) 2019 Alcides Goldoni Junior <agoldonijr@gmail.com>
 
 ---
 - name: Ansible run script 
@@ -8,7 +9,7 @@
   remote_user: manutencao
 
   tasks:
-    - name: Envia script
+    - name: Send script
       copy: src=/home/goldoni/hpg/scripts/padronizacao/padronizacaoUbuntu.sh dest=/home/manutencao mode=0777
 
     - name: Run a script 
