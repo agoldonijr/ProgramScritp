@@ -1,0 +1,16 @@
+# Copyright (C) 2019 Alcides Goldoni Junior <goldoni@ggaunicamp.com>
+
+---
+- name: Ansible run script 
+  hosts: all
+  become: yes 
+  become_method: sudo
+  remote_user: manutencao
+
+  tasks:
+    - name: Envia script
+      copy: src=/home/goldoni/hpg/scripts/padronizacao/padronizacaoUbuntu.sh dest=/home/manutencao mode=0777
+
+    - name: Run a script 
+      #script: /home/manutencao/padronizacaoUbuntu.sh 
+      command: bash /home/manutencao/padronizacaoUbuntu.sh 
