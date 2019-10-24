@@ -10,8 +10,7 @@
 
   tasks:
     - name: Send script
-      copy: src=/home/goldoni/hpg/scripts/padronizacao/padronizacaoUbuntu.sh dest=/home/manutencao mode=0777
+      copy: src="../padronizacao/padronizacaoUbuntu.sh" dest=/home/manutencao mode=0777
 
     - name: Run a script 
-      #script: /home/manutencao/padronizacaoUbuntu.sh 
       command: bash /home/manutencao/padronizacaoUbuntu.sh 
