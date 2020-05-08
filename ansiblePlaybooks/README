@@ -10,6 +10,11 @@ Configuracao do arquivo de hosts
     172.16.0.15
     172.16.0.30
 
+Teste
+ansible all -m ping 
+all -> todas as maquinas
+-m module + o nome do modulo
+
 Utilizacao
 
 ansible-playbook -l <nome do grupo de maquinas>  <caminho para playbook> -K
