@@ -1,6 +1,10 @@
 # Copyright (C) 2019 Alcides Goldoni Junior <goldoni@ggaunicamp.com>
 # Copyright (C) 2019 Alcides Goldoni Junior <agoldonijr@gmail.com>
 
+#
+# Copia o script de padronizacao do HPG para a maquina alvo e roda ele
+#
+
 ---
 - name: Ansible run script 
   hosts: all
