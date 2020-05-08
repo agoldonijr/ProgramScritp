@@ -1,4 +1,9 @@
 # Copyright (C) 2019 Alcides Goldoni Junior <goldoni@ggaunicamp.com>
+# Copyright (C) 2020 Alcides Goldoni Junior <agoldonijr@gmail.com>
+
+# 
+#  Instala os pacotes base utilizados no HPG
+#
 
 ---
 - name: Ansible install base packages 
@@ -137,3 +142,4 @@
         - tmux
         - gfortran
         - imagemagick
+        - xclip 
