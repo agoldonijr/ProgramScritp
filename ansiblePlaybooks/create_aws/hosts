@@ -1,0 +1,5 @@
+#nomes das maquinas
+[local]
+localhost ansible_conection=local ansible_python_interpreter=python gather_facts=false
+
+[hpg-maquinas]

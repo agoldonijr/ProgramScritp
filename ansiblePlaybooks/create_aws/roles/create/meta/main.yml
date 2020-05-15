@@ -1,0 +1,22 @@
+# Copyright (C) 2019 Alcides Goldoni Junior <goldoni@ggaunicamp.com>
+# Copyright (C) 2019 Alcides Goldoni Junior <agoldonijr@gmail.com>
+
+
+galaxy_info:
+  author: Alcides Goldoni Jr
+  description: Nvidia Driver install
+  company: HPG - Cepetro - Unicamp
+
+  license: GPLv2
+
+  min_ansible_version: 1.2
+  
+  plataforms:
+  - name: Ubuntu
+    version:
+    - xenial
+    - bionic
+  - name: CentOs 
+    version:
+    - 6.x
+    - 7.x

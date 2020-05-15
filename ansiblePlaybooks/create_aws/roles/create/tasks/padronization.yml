@@ -1,0 +1,37 @@
+# Copyright (C) 2019 Alcides Goldoni Junior <goldoni@ggaunicamp.com>
+# Copyright (C) 2020 Alcides Goldoni Junior <agoldonijr@gmail.com>
+
+# 
+#  Instala os pacotes base utilizados no HPG
+#
+
+---
+- name: Ansible install base packages
+  apt:
+    name: "{{ packages }}"
+    state: present
+    update_cache: yes
+  vars:
+    packages:
+    - git
+    - vim
+    - screen
+    - gcc
+    - g++
+    - htop
+    - build-essential 
+    - openssh-server
+    - ntp 
+    - cmake 
+    - fftw-dev 
+    - libfftw3-dev 
+    - libeigen3-dev 
+    - libcgal-dev 
+    - libopenmpi-dev 
+    - autoconf 
+    - autoconf-archive 
+    - autogen 
+    - automake 
+    - gfortran
+    - python-dev
+    - python3-dev

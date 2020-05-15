@@ -1,0 +1,8 @@
+---
+# vars file for create
+instance_type: t2.medium
+security_groups: hpg-admin 
+image: <colocar imagem>
+keypair: <chave>
+region: <region> 
+count: <quantidade>

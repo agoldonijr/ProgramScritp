@@ -1,0 +1,45 @@
+
+Estrutura
+
+    Files:
+    Arquivos que quero compartilhar com os hosts
+
+    Handlers:
+    Reiniciar servicos
+
+    Meta:
+
+    Tasks:
+    Onde ficam as tarefas
+
+    Templates:
+    Arquivos de configuracao que aceitam variaveis
+
+    Tests:
+    
+    Vars:
+    Minhas variaveis
+
+
+Atualizar as variaveis em:
+
+    roles/create/vars/main.yml
+
+Exportar AWS_ACCESS_KEY e AWS_SECRET_ACCESS_KEY
+
+Adicoinar a chave criada na AWS (*.pem normalmente)
+    chmod 0400 <chave>
+    ssh-add <nome da chave>.pem
+
+Rodando....
+
+    Na pasta raiz
+
+    ansible-playbook -i hosts main.yml
+
+    Se rodar... (talvez seja precisa entrar nas maquinas para dar yes no primeiro ssh, deve ter como melhorar isso)
+    ansible-playbook -i hosts all -m ping -u ubuntu
+
+
+Agradecimento
+    Essa playbok vou retirada do video do Ansible do Jeferson Fernando Noronha [https://nl.linkedin.com/in/jefersonfernando]
